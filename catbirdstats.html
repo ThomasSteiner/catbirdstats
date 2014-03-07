@@ -1,0 +1,39 @@
+{% extends "catbirdStats.html" %}
+{% block style %}
+{{ super() }}
+		#metrics-table-container {float: left; clear: both;}
+		.even {background-color: rgb(221, 228, 233);}
+{% endblock %}
+
+{% block message %}
+{{ super() }}
+{% endblock %}
+
+{% block results %}
+<div id="teams-table-container">
+	<h1>Teams table</h1>
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Dollars remaining</th>
+		<th>Players drafted</th>
+	</tr>
+
+{% set counter = 0 %}
+{% for team in teams %}
+	{% set counter = counter + 1 %}
+	{% if counter is even %}
+	<tr class="even">
+	{% else %}
+	<tr>
+	{% endif %}
+		<td>{{counter}}</td>
+		<td>{{teams.teamName}}</td>
+		<td>{{teams.remainingDollars}}</td>
+		<td>{{teams.remainingSpots}}</td>
+		
+	</tr>
+{% endfor %}
+</table>
+</div>
+{% endblock %}
